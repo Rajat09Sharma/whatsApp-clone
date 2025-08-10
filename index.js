@@ -15,14 +15,20 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://spontaneous-blini-333547.netlify.app",
+    methods: ["GET", "POST"]
   }
 });
 const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: "https://spontaneous-blini-333547.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 
 connectDB();
 
